@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration — Le Phénicien</title>
+    
+    <!-- Polices & Icônes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Feuille de style Admin -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Effet de fond -->
+    <div class="noise-overlay"></div>
+
+    <!-- ÉCRAN DE CONNEXION -->
+    <div id="login-screen" class="login-overlay">
+        <div class="login-card">
+            <div class="gold-anchor-icon">
+                <i class="fa-solid fa-anchor"></i>
+            </div>
+            <div class="login-header">
+                <h2>LE PHÉNICEN</h2>
+                <p>Espace d'administration réservé</p>
+            </div>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label for="username">Identifiant</label>
+                    <input type="text" id="username" placeholder="Entrez votre identifiant" required autocomplete="username">
+                </div>
+                <div class="input-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+                </div>
+                <div id="login-error" class="error-message">
+                    Identifiant ou mot de passe incorrect.
+                </div>
+                <button type="submit" class="btn-login">SE CONNECTER</button>
+            </form>
+            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour au site principal</a>
+        </div>
+    </div>
+
+    <!-- TABLEAU DE BORD ADMIN -->
+    <div id="admin-dashboard" style="display: none;">
+        
+        <!-- En-tête -->
+        <header class="admin-header">
+            <div class="brand-info">
+                <span class="brand-name">LE PHÉNICEN</span>
+                <span class="admin-badge">Gestion des Réservations</span>
+            </div>
+            <button class="btn-logout" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i> Déconnexion
+            </button>
+        </header>
+
+        <main class="admin-container">
+            
+            <!-- Cartes de Statistiques -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="gold-icon"><i class="fa-solid fa-calendar-day"></i></div>
+                    <div>
+                        <h4>Réservations Aujourd'hui</h4>
+                        <p id="total-today">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="gold-icon"><i class="fa-solid fa-chair"></i></div>
+                    <div>
+                        <h4>Tables réservées (Aujourd'hui)</h4>
+                        <p id="tables-occupied">0 table(s)</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="gold-icon"><i class="fa-solid fa-list-check"></i></div>
+                    <div>
+                        <h4>Total Général</h4>
+                        <p id="total-all">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tableau des Réservations -->
+            <section class="table-section">
+                <div class="table-header">
+                    <h2>Liste des Réservations</h2>
+                    
+                    <!-- Filtre de recherche par Nom -->
+                    <div class="filter-group">
+                        <input type="text" id="search-input" placeholder="Rechercher par nom..." onkeyup="filterTable()">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="reservations-table">
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th>Téléphone</th>
+                                <th>Date & Heure</th>
+                                <th>Table</th>
+                                <th>Couverts</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservations-body">
+                            <!-- Les données Supabase s'injectent ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

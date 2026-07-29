@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le Phénicien - Restaurant Gastronomique d'Exception au Vieux Port de Bizerte.">
+    <title>Le Phénicien — Restaurant Gastronomique</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div class="canvas-bg" id="canvasBg" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <!-- EN-TÊTE COMPACT -->
+    <header class="header-bar">
+        <a href="index.html" class="brand-block">
+            <div class="gold-anchor"><i class="fa-solid fa-anchor"></i></div>
+            <div class="brand-text-container">
+                <div class="brand-text">
+                    <span class="brand-name">LE PHÉNICIEN</span>
+                    <span class="brand-sub">مطعم الفنيقي</span>
+                </div>
+            </div>
+        </a>
+
+        <div class="header-actions">
+            <div class="status-pill">
+                <span class="dot-online"></span>
+                <span>Vieux Port • Bizerte</span>
+            </div>
+            <a href="reservation.html" class="btn-reserve">
+                <i class="fa-solid fa-utensils"></i> Réserver
+            </a>
+        </div>
+    </header>
+
+    <main class="app-viewport">
+        
+        <!-- HERO SECTION OPTIMISÉ -->
+        <section class="hero-block">
+            <div class="gold-badge-pill">
+                <i class="fa-solid fa-gem"></i> ÉLÉGANCE MARITIME EXCLUSIVE
+            </div>
+            <h1 class="hero-title">
+                <span class="light-text">Gastronomie</span> <span class="gold-serif">& L'Art de Vivre</span>
+            </h1>
+            <p class="hero-subtext">
+                Une immersion sensorielle d'exception ancrée au cœur du mythique port de Bizerte.
+            </p>
+        </section>
+
+        <!-- SECTION PRINCIPALE (DISPOSITION DYNAMIQUE) -->
+        <section class="main-showcase-grid">
+            
+            <!-- VEDETTE : BATEAU RESTAURANT -->
+            <article class="master-card interactive-card" data-bg="le-phenicien.jpg">
+                <div class="card-inner">
+                    <div class="parallax-wrapper">
+                        <img src="images/le-phenicien.jpg"  alt="Bateau Restaurant Le Phénicien" class="parallax-img">
+                    </div>
+                    <div class="card-glass-tag">
+                        <div class="tag-info">
+                            <span class="loc-badge"><i class="fa-solid fa-ship"></i> Bateau Restaurant</span>
+                            <h2>L'Emblème du Port</h2>
+                        </div>
+                        <a href="reservation.html" class="explore-btn">
+                            Réserver une Table <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- UNIVERS ET EXPÉRIENCES (2x2 COMPACT) -->
+            <div class="quad-grid">
+                
+                <article class="quad-card interactive-card" data-bg="plat.jpg">
+                    <div class="card-box">
+                        <div class="img-frame">
+                            <img src="images/plat.jpg" alt="Haute Gastronomie" class="parallax-img">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag-num">01</span>
+                            <div class="text">
+                                <h3>Gastronomie</h3>
+                                <p>Saveurs méditerranéennes</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="quad-card interactive-card" data-bg="salon.jpg">
+                    <div class="card-box">
+                        <div class="img-frame">
+                            <img src="images/salon.jpg" alt="Salons Privés" class="parallax-img">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag-num">02</span>
+                            <div class="text">
+                                <h3>Salons VIP</h3>
+                                <p>Cadre intime & réservé</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="quad-card interactive-card" data-bg="vue.jpg">
+                    <div class="card-box">
+                        <div class="img-frame">
+                            <img src="images/vue.jpg" alt="Vue Panoramique" class="parallax-img">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag-num">03</span>
+                            <div class="text">
+                                <h3>Panorama</h3>
+                                <p>Vue unique sur le Vieux Port</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="quad-card interactive-card" data-bg="equipage.jpg">
+                    <div class="card-box">
+                        <div class="img-frame">
+                            <img src="images/equipage.jpg" alt="Service Prestige" class="parallax-img">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag-num">04</span>
+                            <div class="text">
+                                <h3>Service Prestige</h3>
+                                <p>Accueil d'exception</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- BARRE DE CONTACT ET INFOS PRATIQUES COMPACTE -->
+        <footer class="quick-info-bar">
+            <div class="info-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Vieux Port, Bizerte</span>
+            </div>
+            <div class="info-item">
+                <i class="fa-solid fa-clock"></i>
+                <span>Ouvert 7j/7 : 12h00 - 02h00</span>
+            </div>
+            <a href="tel:72424480" class="info-item contact-link">
+                <i class="fa-solid fa-phone"></i>
+                <span>72 424 480</span>
+            </a>
+            <a href="admin.html" class="btn-admin">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </footer>
+
+    </main>
+
+</body>
+</html>

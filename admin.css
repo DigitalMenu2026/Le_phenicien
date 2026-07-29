@@ -1,0 +1,420 @@
+/* ==========================================================================
+   STYLE ESPACE ADMIN & LOGIN — LE PHÉNICIEN
+   ========================================================================== */
+
+/* --- 1. VARIABLES & REZÉRO --- */
+:root {
+    --gold-primary: #e5c158;
+    --gold-bright: #fff2a8;
+    --gold-glow: rgba(229, 193, 88, 0.35);
+    --bg-dark: #030407;
+    --card-bg: rgba(10, 13, 20, 0.75);
+    --glass-border: rgba(229, 193, 88, 0.22);
+    --font-serif: 'Italiana', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    padding-bottom: 40px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --- 2. EFFETS DE FOND (GRAIN) --- */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+/* --- 3. ÉCRAN DE CONNEXION (LOGIN RESTREINT) --- */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, rgba(10, 13, 20, 0.85) 0%, rgba(3, 4, 7, 0.98) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.login-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 35px 30px;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.gold-anchor-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-primary);
+    background: rgba(229, 193, 88, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-primary);
+    font-size: 1.3rem;
+    box-shadow: 0 0 15px var(--gold-glow);
+}
+
+.login-header h2 {
+    font-family: var(--font-serif);
+    letter-spacing: 3px;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.login-header p {
+    font-size: 0.8rem;
+    color: #8c96a8;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--gold-bright);
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    color: #fff;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.error-message {
+    display: none;
+    color: #ff4d4d;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-primary) 100%);
+    color: #030407;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 193, 88, 0.4);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #8c96a8;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.back-link:hover {
+    color: var(--gold-bright);
+}
+
+/* --- 4. HEADER ADMIN --- */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: rgba(10, 13, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.brand-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+
+.admin-badge {
+    font-size: 0.75rem;
+    color: var(--gold-bright);
+    background: rgba(229, 193, 88, 0.1);
+    border: 1px solid var(--glass-border);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.btn-logout {
+    background: rgba(255, 59, 48, 0.1);
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    color: #ff4d4d;
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: var(--font-sans);
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    background: #ff4d4d;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 59, 48, 0.4);
+}
+
+/* --- 5. CONTENEUR PRINCIPAL ADMIN --- */
+.admin-container {
+    max-width: 1280px;
+    margin: 30px auto 0;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* --- 6. CARTES DE STATISTIQUES --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold-primary);
+}
+
+.gold-icon {
+    font-size: 1.8rem;
+    color: var(--gold-primary);
+}
+
+.stat-card h4 {
+    font-size: 0.8rem;
+    color: #8c96a8;
+    font-weight: 400;
+}
+
+.stat-card p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 2px;
+}
+
+/* --- 7. TABLEAU DES RÉSERVATIONS --- */
+.table-section {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(15px);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.table-header h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--gold-bright);
+}
+
+.filter-group {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-group input, 
+.filter-group select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: 0.3s;
+}
+
+.filter-group input:focus, 
+.filter-group select:focus {
+    border-color: var(--gold-primary);
+}
+
+.filter-group input::placeholder {
+    color: #667085;
+}
+
+.filter-group select option {
+    background: #0a0d14;
+    color: #fff;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.reservations-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.reservations-table th {
+    padding: 14px;
+    border-bottom: 1px solid var(--glass-border);
+    color: var(--gold-primary);
+    font-weight: 600;
+}
+
+.reservations-table td {
+    padding: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e0e6ed;
+}
+
+.reservations-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* --- 8. BADGES DE STATUT --- */
+.badge-status {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge-status.confirmé { 
+    background: rgba(76, 217, 100, 0.15); 
+    color: #4cd964; 
+    border: 1px solid rgba(76, 217, 100, 0.3);
+}
+
+.badge-status.en-attente { 
+    background: rgba(255, 180, 0, 0.15); 
+    color: #ffb400; 
+    border: 1px solid rgba(255, 180, 0, 0.3);
+}
+
+.badge-status.annulé { 
+    background: rgba(255, 59, 48, 0.15); 
+    color: #ff3b30; 
+    border: 1px solid rgba(255, 59, 48, 0.3);
+}
+
+/* --- 9. BOUTONS D'ACTION EN TABLEAU --- */
+.btn-action {
+    background: none;
+    border: none;
+    color: #8c96a8;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn-action.approve:hover { 
+    color: #4cd964; 
+    transform: scale(1.15);
+}
+
+.btn-action.delete:hover { 
+    color: #ff3b30; 
+    transform: scale(1.15);
+}
+
+/* --- 10. ADAPTATION RESPONSIVE --- */
+@media (max-width: 768px) {
+    .admin-header {
+        padding: 15px 20px;
+    }
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .filter-group {
+        width: 100%;
+        flex-direction: column;
+    }
+    .filter-group input, 
+    .filter-group select {
+        width: 100%;
+    }
+}
