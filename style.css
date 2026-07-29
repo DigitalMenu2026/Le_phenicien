@@ -1,0 +1,521 @@
+/* ==========================================================================
+   STYLE COMPACT & LUXE — LE PHÉNICIEN (VERSION CORRIGÉE GITHUB PAGES)
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gold-primary: #e5c158;
+    --gold-bright: #fff2a8;
+    --gold-glow: rgba(229, 193, 88, 0.35);
+    --bg-dark: #030407;
+    --card-bg: rgba(10, 13, 20, 0.65);
+    --glass-border: rgba(229, 193, 88, 0.22);
+    --font-serif: 'Italiana', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- EFFETS DE FOND & GRAIN --- */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+.canvas-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('images/le-phenicien.jpg');
+    background-position: center;
+    background-size: cover;
+    filter: blur(50px) brightness(0.14);
+    transform: scale(1.1);
+    transition: background-image 0.9s ease-in-out;
+    z-index: -2;
+}
+
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, rgba(3, 4, 7, 0) 0%, rgba(3, 4, 7, 0.96) 100%);
+    z-index: -1;
+}
+
+/* --- HEADER / EN-TÊTE COMPACT --- */
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    width: 100%;
+    background: rgba(3, 4, 7, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(229, 193, 88, 0.12);
+    position: relative;
+    z-index: 10;
+}
+
+.brand-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.gold-anchor {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-primary);
+    background: rgba(229, 193, 88, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gold-primary);
+    font-size: 1.1rem;
+    box-shadow: 0 0 15px var(--gold-glow);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.brand-block:hover .gold-anchor {
+    transform: rotate(15deg) scale(1.05);
+    box-shadow: 0 0 25px var(--gold-primary);
+}
+
+.brand-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    display: block;
+    line-height: 1.1;
+}
+
+.brand-sub {
+    font-size: 0.75rem;
+    color: var(--gold-primary);
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 2px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #9aa3b4;
+    border: 1px solid var(--glass-border);
+    padding: 6px 16px;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+}
+
+.dot-online {
+    width: 7px;
+    height: 7px;
+    background: #4cd964;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4cd964;
+}
+
+.btn-reserve {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 9px 22px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #030407;
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-primary) 100%);
+    border-radius: 50px;
+    border: 1px solid var(--gold-bright);
+    box-shadow: 0 4px 15px rgba(229, 193, 88, 0.3);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-reserve:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(229, 193, 88, 0.5);
+    background: #ffffff;
+    color: #000000;
+}
+
+/* --- CONTENEUR PRINCIPAL --- */
+.app-viewport {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 25px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* --- HERO BLOCK COMPACT --- */
+.hero-block {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.gold-badge-pill {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--gold-bright);
+    border: 1px solid var(--glass-border);
+    padding: 6px 18px;
+    border-radius: 40px;
+    background: rgba(229, 193, 88, 0.06);
+    backdrop-filter: blur(8px);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 300;
+}
+
+.light-text {
+    color: #ffffff;
+    font-family: var(--font-sans);
+    font-weight: 200;
+}
+
+.gold-serif {
+    font-family: var(--font-serif);
+    background: linear-gradient(135deg, #ffffff 0%, var(--gold-bright) 50%, var(--gold-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+}
+
+.hero-subtext {
+    color: #8c96a8;
+    font-size: 0.95rem;
+    font-weight: 300;
+    max-width: 520px;
+}
+
+/* --- DISPOSITION DYNAMIQUE CÔTE À CÔTE --- */
+.main-showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+    width: 100%;
+}
+
+/* CARTE MAÎTRESSE */
+.master-card {
+    position: relative;
+    border-radius: 20px;
+    padding: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    height: 100%;
+    min-height: 400px;
+}
+
+.master-card .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.parallax-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.parallax-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.master-card:hover .parallax-img,
+.quad-card:hover .parallax-img {
+    transform: scale(1.08);
+}
+
+.card-glass-tag {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    background: rgba(5, 7, 12, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 14px 20px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.loc-badge {
+    font-size: 0.75rem;
+    color: var(--gold-bright);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+}
+
+.card-glass-tag h2 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.explore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(229, 193, 88, 0.12);
+    border: 1px solid var(--gold-primary);
+    padding: 8px 16px;
+    border-radius: 25px;
+    color: var(--gold-bright);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.master-card:hover .explore-btn {
+    background: var(--gold-primary);
+    color: #000;
+}
+
+/* --- GRILLE 2X2 --- */
+.quad-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    width: 100%;
+}
+
+.quad-card {
+    position: relative;
+    border-radius: 16px;
+    padding: 0;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    height: 190px;
+}
+
+.quad-card:hover {
+    border-color: var(--gold-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+.img-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: linear-gradient(to top, rgba(3, 4, 7, 0.95) 0%, rgba(3, 4, 7, 0.5) 70%, transparent 100%);
+}
+
+.tag-num {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--gold-bright);
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+.card-content .text h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.card-content .text p {
+    font-size: 0.75rem;
+    color: #c4cbd4;
+}
+
+/* --- BARRE D'INFORMATIONS ET FOOTER --- */
+.quick-info-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(10, 13, 20, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 14px 20px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #c4cbd4;
+    font-size: 0.85rem;
+}
+
+.info-item i {
+    color: var(--gold-primary);
+}
+
+.contact-link {
+    text-decoration: none;
+    color: var(--gold-bright);
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.contact-link:hover {
+    color: #fff;
+}
+
+.btn-admin {
+    padding: 6px 14px;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--gold-bright);
+    background: rgba(229, 193, 88, 0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-admin:hover {
+    background: var(--gold-primary);
+    color: #030407;
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+/* --- RESPONSIVE ADAPTATIF --- */
+@media (max-width: 992px) {
+    .main-showcase-grid {
+        grid-template-columns: 1fr;
+    }
+    .master-card {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-bar {
+        padding: 12px 15px;
+    }
+    .brand-name {
+        font-size: 1.2rem;
+    }
+    .quad-grid {
+        grid-template-columns: 1fr;
+    }
+    .quad-card {
+        height: 160px;
+    }
+    .hero-title {
+        font-size: 1.9rem;
+    }
+    .quick-info-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .status-pill {
+        display: none;
+    }
+    .card-glass-tag {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
