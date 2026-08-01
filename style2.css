@@ -1,0 +1,783 @@
+/* ==========================================================================
+   Style2.css — Le Phénicien (Édition Sublimée Luxe — Mobile & Desktop)
+   ========================================================================== */
+
+:root {
+  --gold: #e5c158;
+  --gold2: #fff2a8;
+  --gold-glow: rgba(229, 193, 88, 0.4);
+  --bg: #030407;
+  --card: rgba(10, 13, 20, 0.92);
+  --card-inner: rgba(18, 24, 38, 0.7);
+  --border: rgba(229, 193, 88, 0.22);
+  --text: #ffffff;
+  --text-muted: #a3a8b5;
+  --sea-blue: #38bdf8;
+  --occupied-red: #ef4444;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: radial-gradient(circle at 50% 0%, #0d1527 0%, #030407 80%),
+              url('le-phenicien.jpg') center/cover fixed;
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   1. HEADER & BARRE SUPÉRIEURE
+   ========================================================================== */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 5%;
+  border-bottom: 1px solid var(--border);
+  background: rgba(3, 4, 7, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-block {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.gold-anchor {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 1rem;
+  background: rgba(229, 193, 88, 0.08);
+  box-shadow: 0 0 12px rgba(229, 193, 88, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.brand-block:hover .gold-anchor {
+  transform: rotate(15deg) scale(1.05);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: 'Italiana', serif;
+  font-size: 1.45rem;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #ffffff 0%, var(--gold2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-sub {
+  color: var(--gold);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+}
+
+.btn-back, .btn-reserve {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid var(--gold);
+  background: linear-gradient(135deg, var(--gold2), var(--gold));
+  color: #0d1117;
+  font-size: 0.88rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-back {
+  background: rgba(229, 193, 88, 0.05);
+  color: var(--gold2);
+  border-color: rgba(229, 193, 88, 0.4);
+}
+
+.btn-back:hover {
+  background: rgba(229, 193, 88, 0.18);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(229, 193, 88, 0.25);
+}
+
+.btn-reserve:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(229, 193, 88, 0.45);
+}
+
+/* ==========================================================================
+   2. CONTENEUR PRINCIPAL & EN-TÊTE
+   ========================================================================== */
+.app-viewport {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.hero-block {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.gold-serif {
+  font-family: 'Italiana', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  background: linear-gradient(135deg, #ffffff 30%, var(--gold2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+.hero-subtext {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 6px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   3. BARRE D'ONGLETS & LÉGENDE
+   ========================================================================== */
+.plan-toggle-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding: 4px;
+}
+
+.tab-btn {
+  background: rgba(17, 25, 40, 0.75);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.tab-btn i {
+  font-size: 0.95rem;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  background: linear-gradient(135deg, var(--gold2), var(--gold));
+  color: #0b0f19;
+  font-weight: 700;
+  border-color: var(--gold2);
+  box-shadow: 0 4px 15px rgba(229, 193, 88, 0.3);
+}
+
+.legend-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto 24px;
+  background: rgba(10, 15, 26, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  width: fit-content;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #d0d5e0;
+  font-weight: 500;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.free { background: #162032; border: 1px solid var(--border); }
+.legend-dot.selected { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+.legend-dot.sea { background: var(--sea-blue); box-shadow: 0 0 8px var(--sea-blue); }
+.legend-dot.occupied { background: var(--occupied-red); box-shadow: 0 0 8px var(--occupied-red); }
+
+/* ==========================================================================
+   4. PLANS DU RESTAURANT (DECK CARDS)
+   ========================================================================== */
+.plans-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.plans-container[data-view="terrasse"] #plan-salon { display: none; }
+.plans-container[data-view="terrasse"] #plan-terrasse { display: block; }
+
+.plans-container[data-view="salon"] #plan-terrasse { display: none; }
+.plans-container[data-view="salon"] #plan-salon { display: block; }
+
+.deck-card {
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease;
+}
+
+.deck-card:hover {
+  border-color: rgba(229, 193, 88, 0.4);
+}
+
+.deck-header {
+  text-align: center;
+  color: var(--gold);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(229, 193, 88, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.col-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--card-inner);
+  padding: 12px 8px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.zone-badge {
+  font-size: 0.78rem;
+  color: var(--gold2);
+  margin-bottom: 14px;
+  text-align: center;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sea-badge {
+  color: #7dd3fc;
+}
+
+/* ==========================================================================
+   5. DESIGN BOUTONS TABLES (HAUTE COUTURE)
+   ========================================================================== */
+.tables-compact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  align-items: center;
+  padding: 4px 0;
+}
+
+/* Base Table */
+.t-square {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(229, 193, 88, 0.3);
+  background: radial-gradient(circle at center, #1b273a 0%, #0d1522 100%);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Chaises Haut & Bas */
+.t-square::before,
+.t-square::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 5px;
+  background: rgba(229, 193, 88, 0.4);
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
+
+.t-square::before { top: -7px; }
+.t-square::after { bottom: -7px; }
+
+/* Hover State */
+.t-square:hover {
+  border-color: var(--gold2);
+  background: radial-gradient(circle at center, #273954 0%, #131e30 100%);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(229, 193, 88, 0.3);
+  z-index: 5;
+}
+
+.t-square:hover::before,
+.t-square:hover::after {
+  background: var(--gold2);
+  width: 28px;
+}
+
+/* Table Sélectionnée */
+.t-square.selected {
+  background: linear-gradient(135deg, #fff7cd 0%, var(--gold) 100%) !important;
+  color: #0a0d14 !important;
+  font-weight: 800;
+  border-color: #ffffff !important;
+  transform: scale(1.12);
+  z-index: 10;
+  animation: pulse-gold 1.8s infinite alternate;
+}
+
+.t-square.selected::before,
+.t-square.selected::after {
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  width: 30px;
+}
+
+@keyframes pulse-gold {
+  0% { box-shadow: 0 0 12px rgba(229, 193, 88, 0.7); }
+  100% { box-shadow: 0 0 26px rgba(255, 242, 168, 1), 0 0 10px rgba(255, 255, 255, 0.8); }
+}
+
+/* Tables Côté Mer 🌊 */
+.sea-t {
+  border-color: rgba(56, 189, 248, 0.45);
+  color: #bae6fd;
+  background: radial-gradient(circle at center, #0f354d 0%, #081d2c 100%);
+}
+
+.sea-t::before,
+.sea-t::after {
+  background: rgba(56, 189, 248, 0.45);
+}
+
+.sea-t:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.45);
+}
+
+.sea-t:hover::before,
+.sea-t:hover::after {
+  background: #38bdf8;
+}
+
+/* Tables Occupées */
+.t-square.occupied {
+  background: linear-gradient(135deg, #321316 0%, #1a080a 100%) !important;
+  color: #fca5a5 !important;
+  cursor: not-allowed !important;
+  opacity: 0.65;
+  border-color: rgba(239, 68, 68, 0.35) !important;
+  pointer-events: none;
+  box-shadow: none !important;
+}
+
+.t-square.occupied::before,
+.t-square.occupied::after {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================================================
+   6. FORMULAIRE DE RÉSERVATION ÉVOLUÉ
+   ========================================================================== */
+.reservation-box {
+  margin-top: 30px;
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.form-header-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(229, 193, 88, 0.2);
+  color: var(--gold);
+}
+
+.form-header-badge i {
+  font-size: 1.3rem;
+}
+
+.form-header-badge h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--gold2);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group label i {
+  color: var(--gold);
+}
+
+.required { color: #f87171; }
+.optional { color: var(--text-muted); font-size: 0.75rem; font-weight: normal; }
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--gold);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(229, 193, 88, 0.2);
+  background: #090e17;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: all 0.25s ease;
+}
+
+textarea {
+  padding-left: 14px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.highlight-group input {
+  background: rgba(229, 193, 88, 0.08);
+  border-color: var(--gold);
+  color: var(--gold2);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(229, 193, 88, 0.35);
+  background: #0d1524;
+}
+
+select option { background: #0f172a; color: #fff; }
+select optgroup { background: #090e17; color: var(--gold); font-weight: bold; }
+
+.btn-container { margin-top: 10px; }
+
+.btn-block {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  justify-content: center;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   7. MODALE DE CONFIRMATION POPUP LUXE
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(3, 4, 7, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 16px;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  background: var(--card);
+  border: 1px solid var(--gold);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 480px;
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(229, 193, 88, 0.25);
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.modal-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: rgba(229, 193, 88, 0.1);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  box-shadow: 0 0 20px rgba(229, 193, 88, 0.35);
+}
+
+.modal-header h2 {
+  font-family: 'Italiana', serif;
+  color: var(--gold2);
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+
+.modal-header p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.modal-body {
+  background: rgba(13, 20, 34, 0.75);
+  border: 1px solid rgba(229, 193, 88, 0.18);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-bottom: 8px;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.s-label {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.s-label i { color: var(--gold); }
+.s-value { color: #ffffff; font-weight: 700; text-align: right; }
+
+.modal-footer { text-align: center; }
+
+/* ==========================================================================
+   8. MEDIA QUERIES (OPTIMISATION MOBILE & TABLETTE)
+   ========================================================================== */
+
+/* Tablette & Petits Écrans PC */
+@media (max-width: 1024px) {
+  .plans-container {
+    grid-template-columns: 1fr;
+  }
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Smartphones / Mobile */
+@media (max-width: 680px) {
+  .header-bar {
+    padding: 10px 16px;
+  }
+
+  .brand-name {
+    font-size: 1.15rem;
+  }
+
+  .brand-sub {
+    font-size: 0.68rem;
+  }
+
+  .btn-back {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .app-viewport {
+    padding: 16px 10px 30px;
+  }
+
+  .hero-block {
+    margin-bottom: 16px;
+  }
+
+  .gold-serif {
+    font-size: 1.75rem;
+  }
+
+  .legend-bar {
+    gap: 12px;
+    padding: 8px 14px;
+    border-radius: 20px;
+  }
+
+  .legend-item {
+    font-size: 0.75rem;
+  }
+
+  .deck-card {
+    padding: 14px 10px;
+    border-radius: 16px;
+  }
+
+  .deck-grid {
+    gap: 6px;
+  }
+
+  .col-zone {
+    padding: 8px 4px;
+  }
+
+  .zone-badge {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+  }
+
+  /* Ajustement de la taille des tables sur petit écran mobile */
+  .t-square {
+    width: 40px;
+    height: 40px;
+    font-size: 0.72rem;
+    border-radius: 8px;
+  }
+
+  .t-square::before, .t-square::after {
+    width: 18px;
+    height: 4px;
+  }
+
+  .t-square::before { top: -5px; }
+  .t-square::after { bottom: -5px; }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .reservation-box {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .modal-card {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+}
